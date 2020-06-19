@@ -1,7 +1,7 @@
 {
-  "name": "@habx/tslib-template",
+  "name": "@habx/react-query-state",
   "version": "0.0.1",
-  "description": "Typescript library template",
+  "description": "hook to manage url query params as default state & persist local state",
   "main": "./dist/index.cjs.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/typings/index.d.ts",
@@ -41,12 +41,23 @@
       "eslint --fix"
     ]
   },
+  "peerDependencies": {
+    "lodash": "^4.17.15",
+    "qs": "^6.9.4",
+    "react": "^16.13.1"
+  },
   "dependencies": {},
   "devDependencies": {
     "@habx/eslint-config-client": "^3.0.1",
+    "@types/lodash": "^4.14.155",
+    "@types/qs": "^6.9.3",
+    "@types/react": "^16.9.38",
     "bili": "^5.0.2",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.1",
+    "lodash": "^4.17.15",
+    "qs": "^6.9.4",
+    "react": "^16.13.1",
     "rimraf": "^3.0.0",
     "rollup-plugin-typescript2": "^0.27.0",
     "typescript": "^3.8.3"

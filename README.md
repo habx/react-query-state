@@ -1,5 +1,10 @@
-# Template for typescript library creation
+# React Query State
 
-- Output both ESM and CommonJS formats
-- Tree shaking
-- TypeScript support
+
+### Example
+```typescript
+  const [filters, _, { isInitialized }] = useQueryState<LotsFilters>('lotsFilters', { // eslint-disable-line
+      customClean: customLotsFilters,
+    }
+  )
+```
