@@ -2,6 +2,7 @@ import { get, isEmpty } from 'lodash'
 import * as React from 'react'
 
 import cleanQueryState from './cleanQueryState'
+import queryStateContext from './queryState.context'
 import usePersistUrlFilters from './usePersistUrlFilters'
 import useUrlQuery from './useUrlQuery'
 import { UrlFiltersParams } from './useUrlQuery'
@@ -10,8 +11,8 @@ export type UseQueryStateOptions<FiltersType> = {
   defaultValue?: FiltersType
   customClean?: (filter: any, key?: string | number) => any | void
   url?: UrlFiltersParams
-  value: FiltersType
-  onChange: (groupName: string, value: FiltersType) => void
+  value?: FiltersType
+  onChange?: (groupName: string, value: FiltersType) => void
   persistValue?: (groupName: string, value: FiltersType) => void
   groupName?: string
 }
@@ -21,9 +22,16 @@ const useQueryState = <FiltersType = any>(
 ) => {
   const initialized = React.useRef<boolean>(false)
 
-  const currentValue = options.value ?? options.defaultValue
+  const { state, setState } = React.useContext(queryStateContext)
+  if (!state && options.onChange === undefined) {
+    throw new Error(
+      'Cannot use uncontrolled mode of useQueryState without QueryStateProvider'
+    )
+  }
 
-  const groupName = options.groupName ?? 'default'
+  const groupName = options.groupName ?? 'query'
+  const currentValue =
+    state?.[groupName] ?? options.value ?? options.defaultValue
 
   const handleCleanFilters = React.useCallback(
     (dirtyFilters: any) =>
@@ -43,7 +51,9 @@ const useQueryState = <FiltersType = any>(
         options.persistValue &&
           options.persistValue(groupName, handleCleanFilters(newFilters))
       }
-      options.onChange(groupName, newFilters)
+      options.onChange && options.onChange(groupName, newFilters)
+      setState &&
+        setState((oldState: any) => ({ ...oldState, [groupName]: newFilters }))
     },
     [options.onChange, groupName, handleCleanFilters, options.persistValue]
   )
