@@ -30,8 +30,6 @@ const useQueryState = <FiltersType = any>(
   }
 
   const groupName = options.groupName ?? 'query'
-  const currentValue =
-    state?.[groupName] ?? options.value ?? options.defaultValue
 
   const handleCleanFilters = React.useCallback(
     (dirtyFilters: any) =>
@@ -41,6 +39,13 @@ const useQueryState = <FiltersType = any>(
 
   const handleSetUrl = usePersistUrlFilters(groupName, options.url)
   const urlFilters = useUrlQuery(groupName, options.url)
+  const cleanedUrlFilters = handleCleanFilters(urlFilters)
+
+  const currentValue =
+    state?.[groupName] ??
+    options.value ??
+    cleanedUrlFilters ??
+    options.defaultValue
 
   const handleSetFilter = React.useCallback(
     (
@@ -67,8 +72,7 @@ const useQueryState = <FiltersType = any>(
   React.useEffect(() => {
     if (groupName) {
       if (!isEmpty(urlFilters)) {
-        const cleanedFilters = handleCleanFilters(urlFilters)
-        handleSetFilter(cleanedFilters, { save: false })
+        handleSetFilter(cleanedUrlFilters, { save: false })
       } else {
         handleSetUrl(currentValue)
       }
