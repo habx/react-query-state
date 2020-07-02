@@ -48,7 +48,15 @@ export const cleanState = (customCleanState?: CustomCleanState) => (
 export const cleanQueryState = (
   filters: any,
   customCleanFilter?: CustomCleanState
-) =>
-  pickBy(mapValues(filters, cleanState(customCleanFilter)), (el) => !isNil(el))
+) => {
+  const state = pickBy(
+    mapValues(filters, cleanState(customCleanFilter)),
+    (el) => !isNil(el)
+  )
+  if (isEmpty(state)) {
+    return null
+  }
+  return state
+}
 
 export default cleanQueryState
