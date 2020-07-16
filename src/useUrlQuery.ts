@@ -1,11 +1,8 @@
 import * as qs from 'qs'
 
-export type UrlFiltersParams = {
-  shouldUseGetRoot?: boolean
-  persist?: boolean
-}
+import { UrlOptions } from './types'
 
-const useUrlQuery = (groupName: string, config: UrlFiltersParams = {}) => {
+const useUrlQuery = (groupName: string, config: UrlOptions = {}) => {
   const { shouldUseGetRoot = false } = config
 
   const search = qs.parse(window.location.search.slice(1))
