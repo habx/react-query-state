@@ -1,15 +1,9 @@
 import * as qs from 'qs'
 import * as React from 'react'
 
-export type UrlFiltersParams = {
-  shouldUseGetRoot?: boolean
-  persist?: boolean
-}
+import { UrlOptions } from './types'
 
-const usePersistUrlFilters = (
-  groupName: string,
-  config: UrlFiltersParams = {}
-) => {
+const usePersistUrlFilters = (groupName: string, config: UrlOptions = {}) => {
   const { shouldUseGetRoot = false, persist = true } = config
 
   return React.useCallback(

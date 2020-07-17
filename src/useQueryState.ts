@@ -3,19 +3,9 @@ import * as React from 'react'
 
 import cleanQueryState from './cleanQueryState'
 import queryStateContext from './queryState.context'
+import { UseQueryStateOptions } from './types'
 import usePersistUrlFilters from './usePersistUrlFilters'
 import useUrlQuery from './useUrlQuery'
-import { UrlFiltersParams } from './useUrlQuery'
-
-export type UseQueryStateOptions<FiltersType> = {
-  defaultValue?: FiltersType
-  customClean?: (filter: any, key?: string | number) => any | void
-  url?: UrlFiltersParams
-  value?: FiltersType
-  onChange?: (groupName: string, value: FiltersType) => void
-  persistValue?: (groupName: string, value: FiltersType) => void
-  groupName?: string
-}
 
 const useQueryState = <FiltersType = any>(
   options: UseQueryStateOptions<FiltersType>
@@ -60,20 +50,24 @@ const useQueryState = <FiltersType = any>(
       setState &&
         setState((oldState: any) => ({ ...oldState, [groupName]: newFilters }))
     },
-    [options.onChange, groupName, handleCleanFilters, options.persistValue]
+    [groupName, options, setState, handleCleanFilters]
   )
 
   React.useEffect(() => {
-    if (currentValue && initialized.current) {
+    if (
+      currentValue &&
+      initialized.current &&
+      currentValue !== options.defaultValue
+    ) {
       handleSetUrl(currentValue)
     }
-  }, [currentValue, handleSetUrl])
+  }, [currentValue, handleSetUrl, options.defaultValue])
 
   React.useEffect(() => {
     if (groupName) {
       if (!isEmpty(urlFilters)) {
         handleSetFilter(cleanedUrlFilters, { save: false })
-      } else {
+      } else if (options.url?.persistInitial) {
         handleSetUrl(currentValue)
       }
       initialized.current = true
