@@ -31,11 +31,14 @@ const useQueryState = <FiltersType = any>(
   const urlFilters = useUrlQuery(groupName, options.url)
   const cleanedUrlFilters = handleCleanFilters(urlFilters)
 
-  const currentValue =
-    state?.[groupName] ??
-    options.value ??
-    cleanedUrlFilters ??
-    options.defaultValue
+  const currentValueRef = React.useRef<FiltersType | undefined>(
+    cleanedUrlFilters ?? options.defaultValue
+  )
+  const localValue = state?.[groupName] ?? options.value
+  if (localValue) {
+    currentValueRef.current = localValue
+  }
+  const currentValue = currentValueRef.current
 
   const handleSetFilter = React.useCallback(
     (
