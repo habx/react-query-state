@@ -49,17 +49,23 @@
   "dependencies": {},
   "devDependencies": {
     "@habx/eslint-config-client": "^3.0.1",
+    "@testing-library/react-hooks": "^3.4.1",
+    "@types/jest": "^26.0.9",
     "@types/lodash": "^4.14.155",
     "@types/qs": "^6.9.3",
     "@types/react": "^16.9.38",
     "bili": "^5.0.2",
     "husky": "^4.2.3",
+    "jest": "^26.3.0",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "lint-staged": "^10.0.1",
     "lodash": "^4.17.15",
     "qs": "^6.9.4",
     "react": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
     "rimraf": "^3.0.0",
     "rollup-plugin-typescript2": "^0.27.0",
+    "ts-jest": "^26.1.4",
     "typescript": "^3.8.3"
   }
 }
