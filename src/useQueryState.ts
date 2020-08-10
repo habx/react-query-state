@@ -13,6 +13,7 @@ const useQueryState = <FiltersType = any>(
   const initialized = React.useRef<boolean>(false)
 
   const { state, setState } = React.useContext(queryStateContext)
+
   if (!state && options.onChange === undefined) {
     throw new Error(
       'Cannot use uncontrolled mode of useQueryState without QueryStateProvider'
