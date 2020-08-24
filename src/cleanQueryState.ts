@@ -23,7 +23,7 @@ export const cleanState = (customCleanState?: CustomCleanState) => (
   }
   if (typeof filter === 'object') {
     if (isEmpty(filter)) {
-      return null
+      return undefined
     }
     if (filter['0']) {
       return Object.values(filter)
