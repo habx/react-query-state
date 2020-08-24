@@ -54,7 +54,7 @@ export const cleanQueryState = (
     (el) => !isNil(el)
   )
   if (isEmpty(state)) {
-    return null
+    return undefined
   }
   return state
 }
