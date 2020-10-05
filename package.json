@@ -1,7 +1,7 @@
 {
   "name": "@habx/react-query-state",
   "version": "1.5.0",
-  "description": "hook to manage url query params as default state & persist local state",
+  "description": "Hook to manage url query params as default state & persist local state",
   "main": "./dist/index.cjs.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/typings/index.d.ts",
@@ -23,14 +23,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/habx/lib-template.git"
+    "url": "git+https://github.com/habx/react-query-state.git"
   },
   "author": "HABX Front End Team",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/habx/lib-template/issues"
+    "url": "https://github.com/habx/react-query-state/issues"
   },
-  "homepage": "https://github.com/habx/lib-template#readme",
+  "homepage": "https://github.com/habx/react-query-state#readme",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
