@@ -41,7 +41,9 @@ export const cleanState = (customCleanState?: CustomCleanState) => (
     if (!isNaN(numberInput)) {
       return Math.round(numberInput)
     }
-  } catch (e) {}
+  } catch (e) {
+    //
+  }
   return filter
 }
 
