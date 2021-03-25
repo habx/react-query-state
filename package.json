@@ -50,7 +50,7 @@
   "devDependencies": {
     "@habx/eslint-config-client": "^5.5.0",
     "@testing-library/react-hooks": "^5.1.0",
-    "@types/jest": "^26.0.21",
+    "@types/jest": "^26.0.22",
     "@types/lodash": "^4.14.168",
     "@types/qs": "^6.9.6",
     "@types/react": "^17.0.3",
