@@ -1,9 +1,9 @@
-export type UseQueryStateOptions<FiltersType extends object> = {
+export interface UseQueryStateOptions<D extends object> {
   /**
    * Default value used in state
    * @default {}
    */
-  defaultValue?: FiltersType
+  defaultValue?: D
   /**
    * Persist state in query url
    * @default true
@@ -17,5 +17,5 @@ export type UseQueryStateOptions<FiltersType extends object> = {
    * Overwrites default parse url function
    * @param url
    */
-  parseSearch?: (search: string) => object | undefined
+  parseSearch?: (search: string) => D | undefined
 }
