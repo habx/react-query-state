@@ -15,7 +15,6 @@ export interface UseQueryStateOptions<D extends object> {
   cacheKey?: string
   /**
    * Overwrites default parse url function
-   * @param url
    */
   parseSearch?: (search: string) => D | undefined
 }
