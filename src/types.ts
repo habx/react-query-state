@@ -1,15 +1,20 @@
-export type UrlOptions = {
-  shouldUseGetRoot?: boolean
+export interface UseQueryStateOptions<D extends object> {
+  /**
+   * Default value used in state
+   * @default {}
+   */
+  defaultValue?: D
+  /**
+   * Persist state in query url
+   * @default true
+   */
   persist?: boolean
-  persistInitial?: boolean
-}
-
-export type UseQueryStateOptions<FiltersType> = {
-  defaultValue?: FiltersType
-  customClean?: (filter: any, key?: string | number) => any | void
-  url?: UrlOptions
-  value?: FiltersType
-  onChange?: (groupName: string, value: FiltersType) => void
-  persistValue?: (groupName: string, value: FiltersType) => void
-  groupName?: string
+  /**
+   * If provided, state is persisted in session storage with the key provided
+   */
+  cacheKey?: string
+  /**
+   * Overwrites default parse url function
+   */
+  parseSearch?: (search: string) => D | undefined
 }
