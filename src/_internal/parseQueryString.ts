@@ -36,7 +36,7 @@ export const parseUrlString = (filter: any): any => {
   return filter
 }
 
-export const parseQueryString = <FiltersType>(filters: any) => {
+export const parseQueryString = (filters: any) => {
   const state = pickBy(mapValues(filters, parseUrlString), (el) => !isNil(el))
   if (isEmpty(state)) {
     return undefined
