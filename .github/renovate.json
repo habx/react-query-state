@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "2022-03-17",
+  "description": "2022-03-27",
   "extends": [
     "github>habx/devops-repo-shared-configs//renovate/ts-lib-client-public"
   ]
