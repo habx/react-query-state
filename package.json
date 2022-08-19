@@ -50,7 +50,7 @@
     "@habx/eslint-config-client": "^6.9.2",
     "@testing-library/react-hooks": "^8.0.1",
     "@types/jest": "^28.1.7",
-    "@types/lodash": "^4.14.183",
+    "@types/lodash": "^4.14.184",
     "@types/qs": "^6.9.7",
     "@types/react": "^18.0.17",
     "bili": "^5.0.5",
