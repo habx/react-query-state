@@ -52,7 +52,7 @@
     "@types/jest": "^29.2.3",
     "@types/lodash": "^4.14.191",
     "@types/qs": "^6.9.7",
-    "@types/react": "^18.0.25",
+    "@types/react": "^18.0.26",
     "bili": "^5.0.5",
     "eslint": "^8.28.0",
     "husky": "^4.3.8",
